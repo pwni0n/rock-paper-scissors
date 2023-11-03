@@ -18,9 +18,8 @@
 
             function playRound(playerSelection, computerSelection) {
                 playerSelection = String(playerSelection).toLowerCase();
-                const capitalPlayerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-                const winMessage = `Round Won! ${capitalPlayerSelection} beats ${computerSelection}`;
-                const loseMessage = `Round Lost! ${capitalPlayerSelection} beats ${computerSelection}`;
+                const winMessage = `Round Won! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`;
+                const loseMessage = `Round Lost! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`;
                 const tieMessage = "Round Tied!";
                 if (playerSelection === "rock") {
                     if (computerSelection === "scissors") {
