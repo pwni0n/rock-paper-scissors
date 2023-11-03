@@ -17,26 +17,54 @@
             }
 
             function playRound(playerSelection, computerSelection) {
-                playerSelection = playerSelection.toLowerCase();
-                const winMessage = `You Win! ${playerSelection} beats ${computerSelection}`
-                const loseMessage = `You Lose! ${playerSelection} beats ${computerSelection}`
+                playerSelection = String(playerSelection).toLowerCase();
+                const capitalPlayerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+                const winMessage = `Round Won! ${capitalPlayerSelection} beats ${computerSelection}`
+                const loseMessage = `Round Lost! ${capitalPlayerSelection} beats ${computerSelection}`
                 if (playerSelection === "rock") {
                     if (computerSelection === "scissors") {
-                        return winMessage;
+                        console.log(winMessage);
+                        return 1;
                     }
-                    return loseMessage;
+                    console.log(loseMessage);
+                    return 0;
                 } else if (playerSelection === "paper") {
                     if (computerSelection === "rock") {
-                        return winMessage;
+                        console.log(winMessage);
+                        return 1;
                     }
-                    return loseMessage;
+                    console.log(loseMessage);
+                    return 0;
                 } else if (playerSelection === "scissors") {
                     if (computerSelection === "paper") {
-                        return winMessage;
+                        console.log(winMessage);
+                        return 1;
                     }
-                    return loseMessage;
+                    console.log(loseMessage);
+                    return 0;
+                } else {
+                    console.log("PENALTY: Not a valid input");
                 }
             }
+
+            function game() {
+                let playerScore = 0;
+                let computerScore = 0;
+
+                for (let i = 0; i < 5; i++) {
+                    const winner = playRound(prompt("Rock, Paper, or Scissors?"), getComputerChoice());
+                    (winner === 1) ? playerScore++ : computerScore++;
+                    console.log(`Score is (YOU) ${playerScore} - ${computerScore} (COMPUTER)`);
+                    // no reason to continue game when it's impossible for one side to win
+                    if (playerScore === 3 || computerScore === 3) {
+                        break;
+                    }
+                }
+
+                (playerScore > computerScore) ? console.log("You win! Refresh if you wish to play again.") : console.log("You lose. Refresh to try again.");
+            }
+
+            game();
         </script>
     </body>
 </html>
