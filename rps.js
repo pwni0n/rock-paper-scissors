@@ -48,3 +48,13 @@ function playRound(playerSelection, computerSelection) {
         return 0;
     }
 }
+
+let lastResult;
+
+function displayResult(result) {
+    const resultsDiv = document.querySelector(".results");
+    const p = document.createElement("p");
+    p.textContent = result;
+    lastResult ? resultsDiv.insertBefore(p, lastResult) : resultsDiv.appendChild(p);
+    lastResult = p;
+}
