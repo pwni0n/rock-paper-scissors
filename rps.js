@@ -58,3 +58,9 @@ function displayResult(result) {
     lastResult ? resultsDiv.insertBefore(p, lastResult) : resultsDiv.appendChild(p);
     lastResult = p;
 }
+
+const buttons = document.querySelector(".btns");
+
+buttons.addEventListener("click", e => {
+    playRound(e.target.className, getComputerChoice());
+});
