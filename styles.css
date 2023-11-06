@@ -1,0 +1,56 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #051B38;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    background-color: #143054;
+    color: white;
+    margin: 0;
+    padding: 10px;
+}
+
+button {
+    width: 200px;
+    height: 200px;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+p {
+    margin: 0;
+    padding: 10px;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 10px;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #143054;
+    color: white;
+    margin: 0;
+}
+
+.results {
+    text-align: center;
+    font-size: 20px;
+    margin: 0;
+}
+
+.results p:nth-child(odd) {
+    background-color: #4C688B;
+    color: white;
+}
+
+.results p:nth-child(even) {
+    background-color: #748BA7;
+    color: #051B38;
+}
