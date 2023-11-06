@@ -10,41 +10,43 @@ function getComputerChoice() {
 
 let playerScore = 0;
 let computerScore = 0;
+let currentRound = 0;
 
 function playRound(playerSelection, computerSelection) {
+    if (playerScore === 5 || computerScore === 5) return;
     const winMessage = `Round Won! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`;
     const loseMessage = `Round Lost! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`;
     const tieMessage = "Round Tied!";
+    currentRound++;
     if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
-            displayResult(winMessage);
             incrementScore("player");
+            displayResult(winMessage);
         } else if (computerSelection === "rock") {
             displayResult(tieMessage);
         } else {
-            displayResult(loseMessage);
             incrementScore("computer");
-        }
-        
+            displayResult(loseMessage);
+        }       
     } else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
-            displayResult(winMessage);
             incrementScore("player");
+            displayResult(winMessage);          
         } else if (computerSelection === "paper") {
             displayResult(tieMessage);
         } else {
-            displayResult(loseMessage);
             incrementScore("computer");
+            displayResult(loseMessage);          
         }
     } else if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
-            displayResult(winMessage);
             incrementScore("player");
+            displayResult(winMessage);       
         } else if (computerSelection === "scissors") {
             displayResult(tieMessage);
         } else {
-            displayResult(loseMessage);
             incrementScore("computer");
+            displayResult(loseMessage);
         }
     }
 }
@@ -54,7 +56,17 @@ let lastResult;
 function displayResult(result) {
     const resultsDiv = document.querySelector(".results");
     const p = document.createElement("p");
-    p.textContent = result;
+    if (playerScore < 5 && computerScore < 5) {
+        p.textContent = `${currentRound} - ${result}`;
+    } else if (playerScore === 5) {
+        p.textContent = "YOU WIN! Game over.";
+        p.style.backgroundColor = "#28cc25";
+        p.style.color = "white";
+    } else {
+        p.textContent = "YOU LOSE! Game over.";
+        p.style.backgroundColor = "#ff4242";
+        p.style.color = "white";
+    }
     lastResult ? resultsDiv.insertBefore(p, lastResult) : resultsDiv.appendChild(p);
     lastResult = p;
 }
@@ -72,8 +84,8 @@ function incrementScore(player) {
     }
 }
 
-const buttons = document.querySelector(".btns");
+const buttons = document.querySelectorAll("button");
 
-buttons.addEventListener("click", e => {
+buttons.forEach(btn => btn.addEventListener("click", e => {
     playRound(e.target.className, getComputerChoice());
-});
+}));
