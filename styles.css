@@ -17,6 +17,14 @@ button {
     height: 200px;
     font-size: 28px;
     font-weight: 900;
+    color: #051B38;
+    background-color: #748BA7;
+    border: none;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #4C688B;
 }
 
 p {
@@ -33,7 +41,8 @@ p {
 
 .scores {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 100px;
     background-color: #143054;
     color: white;
     margin: 0;
